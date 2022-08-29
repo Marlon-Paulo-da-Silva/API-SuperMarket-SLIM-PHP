@@ -1,0 +1,21 @@
+{
+    "name": "marlon/blog-slim-php",
+    "autoload": {
+        "psr-4": {
+            "app\\": "app/"
+        },
+        "files":["app/helpers/helpers.php"]
+    },
+    "authors": [
+        {
+            "name": "Marlon Paulo",
+            "email": "marlon.paulo.silva@outlook.com"
+        }
+    ],
+    "require": {
+        "slim/slim": "^4.10",
+        "slim/psr7": "^1.5",
+        "league/plates": "^3.4",
+        "vlucas/phpdotenv": "^5.4"
+    }
+}
