@@ -5,8 +5,4 @@ Allow from All
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^ index.php [QSA,L]
 
-     SetEnv DBNAME "crud_api_supermarket"
-     SetEnv USERNAME "usuario2_marlon"
-     SetEnv PASSWORD "ge2j%3*SHX[&"
-     SetEnv HOST "mysql:host=191.252.132.163"
 </IfModule>
