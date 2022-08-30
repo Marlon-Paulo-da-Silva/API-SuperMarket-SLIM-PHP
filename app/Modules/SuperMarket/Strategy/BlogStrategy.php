@@ -1,7 +1,6 @@
 <?php
 
-namespace app\Strategy;
-
+namespace app\Modules\SuperMarket\Strategy;
 
 
 trait BlogStrategy {

@@ -1,6 +1,6 @@
 <?php
 
-namespace app\controllers\admin;
+namespace app\Modules\SuperMarket\controllers\admin;
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;

@@ -1,6 +1,7 @@
 <?php
 
-namespace app\models;
+namespace app\Modules\SuperMarket\models;
+
 
 class Admin
 {

@@ -4,7 +4,10 @@
         "psr-4": {
             "app\\": "app/"
         },
-        "files":["app/helpers/helpers.php"]
+        "files":[
+            "app/helpers/helpers.php",
+            "app/Modules/SuperMarket/layouts/view.php"
+        ]
     },
     "authors": [
         {

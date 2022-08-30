@@ -2,7 +2,7 @@
 
 namespace app\helpers;
 
-use app\Strategy\BlogStrategy;
+use app\Modules\SuperMarket\Strategy\BlogStrategy;
 
 class Validates {
   use BlogStrategy;

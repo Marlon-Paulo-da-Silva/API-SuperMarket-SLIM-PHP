@@ -4,18 +4,20 @@
   use app\helpers\Flash;
   use app\helpers\Redirect;
 
-  function view (string $view, array $data = []){
+  // function view (string $view, array $data = []){
+  //   $path = dirname(__FILE__) . '/app/Modules/SuperMarket/views/';
+  //   echo $path;
+  //   // $path = dirname(__FILE__) . '/views';
 
-    $path = dirname(__FILE__) . '/views';
 
-    // Create new Plates instance
-    $templates = new League\Plates\Engine($path);
+  //   // Create new Plates instance
+  //   $templates = new League\Plates\Engine($path);
 
     
 
-    // Render a template
-    echo $templates->render($view, $data);
-  }
+  //   // Render a template
+  //   echo $templates->render($view, $data);
+  // }
 
   function flash($index, $message){
     Flash::add($index, $message);
