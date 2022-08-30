@@ -1,5 +1,6 @@
 vendor
 node_modules
 .env
-app/.htacces
+/app/.htacces
+.htacces
 error_log
