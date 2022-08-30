@@ -3,7 +3,7 @@
 namespace app\Modules\SuperMarket\Strategy;
 
 
-trait BlogStrategy {
+trait SuperMarketStrategy {
 
   private $errors = [];
 

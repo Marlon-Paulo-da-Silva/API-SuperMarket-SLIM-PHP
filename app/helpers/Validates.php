@@ -2,10 +2,10 @@
 
 namespace app\helpers;
 
-use app\Modules\SuperMarket\Strategy\BlogStrategy;
+use app\Modules\SuperMarket\Strategy\SuperMarketStrategy;
 
 class Validates {
-  use BlogStrategy;
+  use SuperMarketStrategy;
   
   public function validate($rules) {
     foreach ($rules as $field => $validation) {

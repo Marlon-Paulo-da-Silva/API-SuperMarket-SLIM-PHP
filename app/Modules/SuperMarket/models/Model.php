@@ -2,9 +2,17 @@
 
 namespace app\Modules\SuperMarket\models;
 
+use app\Modules\SuperMarket\Traits\Create;
+// use Read;
+// use Update;
+// use Delete;
+
 use app\Connection\Connection;
 
 class Model {
+
+  use Create;
+
   protected $connect;
 
   public function __construct()
@@ -13,7 +21,7 @@ class Model {
   }
 
   public function all(){
-    $sql = "select * from {$this->table}";
+    $sql = "select * from {$this->table} limit {$this->limit}";
 
     $all = $this->connect->query($sql);
     $all->execute();
