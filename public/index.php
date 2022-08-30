@@ -8,9 +8,10 @@
   use Slim\Factory\AppFactory;
   use Slim\Routing\RouteCollectorProxy;
 
-
+  
   $app = AppFactory::create();
-
+  
+  $app->setBasePath('/CRUD-SuperMarket-SLIM-PHP/supermarket');
 
 
   $app->get('/', 'app\Modules\SuperMarket\controllers\admin\LoginController:index');
@@ -34,9 +35,14 @@
   });
 
 
-  
+  $app->group('/stock', function (RouteCollectorProxy $group) {
 
-  require_once __DIR__ . '/../app/src/routes.php';
+    $group->get('/products', 'app\Modules\SuperMarket\controllers\stock\ProductsController:index');
+  
+  
+  });
+
+  // require_once __DIR__ . '/../app/src/routes.php';
 
   // Run app
   $app->run();
