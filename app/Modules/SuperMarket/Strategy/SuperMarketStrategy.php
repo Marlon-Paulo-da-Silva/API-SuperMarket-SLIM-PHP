@@ -21,16 +21,23 @@ trait SuperMarketStrategy {
     }
     
   }
-
+  
   protected function phone($field){
     if(!preg_match("/^\(?[1-9]{2}\)? ?(?:[2-8]|9[1-9])[0-9]{3}\-?[0-9]{4}$/", $_POST[$field])){
       $this->apierrors['errors']['invalid_phone'][] = $_POST[$field];
     }
   }
-
+  
   protected function unique($field, $model){
-    print_r($model);
-    die();
+    $model = "app\\Modules\\SuperMarket\\models\\" . ucfirst($model);
+    
+    $model = new $model();
+    
+    $find = $model->find($field, $_POST[$field]);
+    
+    if($find and !empty($_POST[$field])){
+      $this->apierrors['errors']['already_exist'][] = $field . ' already exist';
+    }
   }
 
   protected function max($field, $max){

@@ -21,11 +21,20 @@ class Model {
   }
 
   public function all(){
-    $sql = "select * from {$this->table} limit {$this->limit}";
+    $sql = "select * from {$this->table} ";
 
     $all = $this->connect->query($sql);
     $all->execute();
 
     return $all->fetchAll();
+  }
+
+  public function find($field, $value){
+    $sql = "select * from {$this->table} where {$field} = :{$field}";
+    $find = $this->connect->prepare($sql);
+    $find->bindValue($field, $value);
+    $find->execute();
+
+    return $find->fetch();
   }
 }
