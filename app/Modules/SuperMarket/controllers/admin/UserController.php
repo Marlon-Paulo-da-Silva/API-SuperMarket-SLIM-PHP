@@ -47,8 +47,8 @@ class UserController
         $validate = new Validates;
 
         $data = $validate->validate([
-          'name' => 'required',
-          'email' => 'required:email',
+          'name' => 'required:max@5',
+          'email' => 'required:email:unique@user',
           'phone' => 'required:phone',
         ]);
 

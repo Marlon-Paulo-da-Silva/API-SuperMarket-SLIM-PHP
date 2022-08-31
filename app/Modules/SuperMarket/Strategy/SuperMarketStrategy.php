@@ -21,20 +21,19 @@ trait SuperMarketStrategy {
     }
     
   }
+
   protected function phone($field){
     if(!preg_match("/^\(?[1-9]{2}\)? ?(?:[2-8]|9[1-9])[0-9]{3}\-?[0-9]{4}$/", $_POST[$field])){
       $this->apierrors['errors']['invalid_phone'][] = $_POST[$field];
     }
   }
-  protected function unique(){
 
+  protected function unique($field, $model){
+    print_r($model);
+    die();
   }
 
-  public function flashAdd($field, $message){
-
-  }
-
-  public function error( $message){
+  protected function max($field, $max){
 
   }
 
