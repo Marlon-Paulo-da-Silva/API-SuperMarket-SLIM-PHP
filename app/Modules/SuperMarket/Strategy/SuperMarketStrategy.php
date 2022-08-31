@@ -11,16 +11,20 @@ trait SuperMarketStrategy {
 
   protected function required($field){
     if(empty($_POST[$field])){
-      $this->errors[$field][] = flash($field, error('Esse campo é obrigatório'));
+      // $this->errors[$field][] = flash($field, error('Esse campo é obrigatório'));
       $this->apierrors['errors']['required_fileds'][] = $field;
     }
   }
   protected function email($field){
+    if(!filter_var($_POST[$field], FILTER_VALIDATE_EMAIL)){
+      $this->apierrors['errors']['invalid_email'][] = $_POST[$field];
+    }
     
-
   }
-  protected function phone(){
-
+  protected function phone($field){
+    if(!preg_match("/^\(?[1-9]{2}\)? ?(?:[2-8]|9[1-9])[0-9]{3}\-?[0-9]{4}$/", $_POST[$field])){
+      $this->apierrors['errors']['invalid_phone'][] = $_POST[$field];
+    }
   }
   protected function unique(){
 
@@ -35,7 +39,7 @@ trait SuperMarketStrategy {
   }
 
   public function hasErrors(){
-    return !empty($this->errors);
+    return !empty($this->apierrors);
   }
 
   public function getApiErrors(){
