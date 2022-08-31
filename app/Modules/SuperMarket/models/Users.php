@@ -3,8 +3,8 @@
 namespace app\Modules\SuperMarket\models;
 
 
-class Admin extends Model {
-    protected $table = 'Admin';
+class Users extends Model {
+    protected $table = 'users';
     protected $limit = '10';
     
   }

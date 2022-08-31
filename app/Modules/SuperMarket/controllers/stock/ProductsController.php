@@ -22,8 +22,20 @@ class ProductsController
 
     public function store(Request $request, Response $response, $args)
     {
+        $products = new Products;
+        $products = $products->create([
+            'name' => 'Pera',
+            'type' => 'fruit',
+            'price' => '2.99',
+            'quantity' => '60',
+            'measurement' => 'unity'
+        ]);
         
-        
+        echo $products;
+        die();
+
+        // echo 'user controller';
+        // die();
 
         return $response;
     }

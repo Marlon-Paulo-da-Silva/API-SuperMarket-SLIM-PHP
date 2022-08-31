@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Modules\SuperMarket\controllers\admin;
+namespace app\Modules\SuperMarket\controllers\user;
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -13,16 +13,13 @@ class UserController
 
     public function index(Request $request, Response $response, $args){
       $user = new Users;
-      $user = $user->create([
-        'name' => 'Gabriel',
-        'email' => 'gabriel@gmail.com'
-      ]);
+      // $user->create([
+      //   'name' => 'Hugo',
+      //   'email' => 'hugo@gmail.com'
+      // ]);
 
-      echo $user;
+      echo 'user controller';
       die();
-
-      // echo 'user controller';
-      // die();
 
       return $response;
     }
