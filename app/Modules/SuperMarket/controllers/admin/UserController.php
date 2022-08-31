@@ -64,6 +64,8 @@ class UserController
         echo json_encode($data);
         die();
 
+
+
         // $_SESSION['message'] = 'Cliente cadastrado com sucesso';
 
         // echo $_SESSION['message'];

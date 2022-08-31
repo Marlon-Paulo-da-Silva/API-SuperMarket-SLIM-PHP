@@ -10,8 +10,7 @@ trait Sanitize {
 
     foreach ($_POST as $field => $value){
       
-      $sanitized[$field] = htmlentities($value, ENT_QUOTES, 'UTF-8');
-    }
+      $sanitized[$field] = strip_tags($value);}
 
     return $sanitized;
   }
