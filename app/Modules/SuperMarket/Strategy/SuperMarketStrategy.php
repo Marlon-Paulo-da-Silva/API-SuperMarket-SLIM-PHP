@@ -39,9 +39,11 @@ trait SuperMarketStrategy {
       $this->apierrors['errors']['already_exist'][] = $field . ' already exist';
     }
   }
-
+  
   protected function max($field, $max){
-
+    if(strlen($_POST[$field]) > $max){
+      $this->apierrors['errors']['character_exceded'][] = $field . " higher than {$max} characters";
+    }
   }
 
   public function hasErrors(){

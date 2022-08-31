@@ -47,7 +47,8 @@ class UserController
         $validate = new Validates;
 
         $data = $validate->validate([
-          'name' => 'required:max@5',
+          'name' => 'required',
+          // 'name' => 'required:max@25',
           'email' => 'required:email:unique@users',
           'phone' => 'required:phone',
         ]);
@@ -60,7 +61,7 @@ class UserController
           die();
         }
 
-        echo 'Passou pelas validações';
+        echo json_encode($data);
         die();
 
         // $_SESSION['message'] = 'Cliente cadastrado com sucesso';

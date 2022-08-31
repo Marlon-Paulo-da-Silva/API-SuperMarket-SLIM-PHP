@@ -3,9 +3,10 @@
 namespace app\helpers;
 
 use app\Modules\SuperMarket\Strategy\SuperMarketStrategy;
+use app\Modules\SuperMarket\Traits\Sanitize;
 
 class Validates {
-  use SuperMarketStrategy;
+  use SuperMarketStrategy, Sanitize;
   
   public function validate($rules) {
     foreach ($rules as $field => $validation) {
@@ -25,6 +26,8 @@ class Validates {
         }
       }
     }
+
+    return (object) $this->sanitize();
   }
 
   private function validationWithParam($field, $validation){
