@@ -6,15 +6,17 @@ namespace app\Modules\SuperMarket\Strategy;
 trait SuperMarketStrategy {
 
   private $errors = [];
+  private $apierrors = [];
+
 
   protected function required($field){
     if(empty($_POST[$field])){
       $this->errors[$field][] = flash($field, error('Esse campo é obrigatório'));
+      $this->apierrors['errors']['required_fileds'][] = $field;
     }
   }
   protected function email($field){
-    // echo 'email';
-    // die();
+    
 
   }
   protected function phone(){
@@ -34,6 +36,14 @@ trait SuperMarketStrategy {
 
   public function hasErrors(){
     return !empty($this->errors);
+  }
+
+  public function getApiErrors(){
+    return json_encode([
+      'status' => 'ERROR',
+      'message' => 'Invalid Signup',
+      'data' => $this->apierrors
+    ]);
   }
   
 }

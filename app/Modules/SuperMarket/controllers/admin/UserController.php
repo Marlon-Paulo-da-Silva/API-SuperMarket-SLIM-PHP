@@ -46,15 +46,22 @@ class UserController
 
         $validate = new Validates;
 
-        $validate->validate([
+        $data = $validate->validate([
           'name' => 'required',
           'email' => 'required:email',
           'phone' => 'required:phone',
         ]);
 
         if($validate->hasErrors()){
-          back();
+          // back();
+          $errors = $validate->getApiErrors();
+          echo $data;
+          echo $errors;
+          die();
         }
+
+        echo $data;
+        die();
 
         // $_SESSION['message'] = 'Cliente cadastrado com sucesso';
 
