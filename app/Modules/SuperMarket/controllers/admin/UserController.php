@@ -12,14 +12,19 @@ class UserController
 {
 
     public function index(Request $request, Response $response, $args){
-      $user = new Users;
-      $user = $user->create([
-        'name' => 'Gabriel',
-        'email' => 'gabriel@gmail.com'
-      ]);
+      $users = new Users;
 
-      echo $user;
-      die();
+      $users = $users->select('id, name, email, phone')->where('id','>','2')->get();
+
+      echo returnApi('SUCCESS', 'Find Users', $users);
+
+      // $user = $user->create([
+      //   'name' => 'Gabriel',
+      //   'email' => 'gabriel@gmail.com'
+      // ]);
+
+      // echo $user;
+      // die();
 
       // echo 'user controller';
       // die();
@@ -61,10 +66,16 @@ class UserController
           die();
         }
 
-        echo json_encode($data);
-        die();
+        $user = new Users;
 
+        $user = $user->create((array)$data);
 
+        if($user) {
+          echo returnApi('SUCCESS', 'Registered successfully');
+          
+        }
+
+        echo returnApi('ERROR', 'Registration with error');
 
         // $_SESSION['message'] = 'Cliente cadastrado com sucesso';
 

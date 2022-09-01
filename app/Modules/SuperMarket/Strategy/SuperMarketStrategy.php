@@ -33,7 +33,7 @@ trait SuperMarketStrategy {
     
     $model = new $model();
     
-    $find = $model->find($field, $_POST[$field]);
+    $find = $model->select()->where($field, $_POST[$field])->first();
     
     if($find and !empty($_POST[$field])){
       $this->apierrors['errors']['already_exist'][] = $field . ' already exist';

@@ -2,11 +2,13 @@
 
   use Slim\Routing\RouteCollectorProxy;
 
-  // $app->get('/user', 'app\Modules\SuperMarket\controllers\admin\UserController:index');
   
   // painel admin
   $app->group('/admin', function (RouteCollectorProxy $group) {
     $group->get('/painel', 'app\Modules\SuperMarket\controllers\admin\DashboardController:index');
+
+    $group->get('/users/all', 'app\Modules\SuperMarket\controllers\admin\UserController:index');
+    $group->get('/users/first', 'app\Modules\SuperMarket\controllers\admin\UserController:index');
     
     $group->get('/create', 'app\Modules\SuperMarket\controllers\admin\UserController:index');
 

@@ -2,16 +2,17 @@
 
 namespace app\Modules\SuperMarket\models;
 
+
+use app\Connection\Connection;
 use app\Modules\SuperMarket\Traits\Create;
-// use Read;
+use app\Modules\SuperMarket\Traits\Read;
+
 // use Update;
 // use Delete;
 
-use app\Connection\Connection;
-
 class Model {
 
-  use Create;
+  use Create, Read;
 
   protected $connect;
 
