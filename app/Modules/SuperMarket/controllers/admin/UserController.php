@@ -18,25 +18,7 @@ class UserController
 
       echo returnApi('SUCCESS', 'Find Users', $users);
 
-      // $user = $user->create([
-      //   'name' => 'Gabriel',
-      //   'email' => 'gabriel@gmail.com'
-      // ]);
-
-      // echo $user;
-      // die();
-
-      // echo 'user controller';
-      // die();
-
       return $response;
-    }
-
-    public function create(Request $request, Response $response, $args)
-    {
-        view('Admin/signup', ['title' => 'Admin Sign up']);
-        // $response->getBody()->write("Hello, Marlon");
-        return $response;
     }
 
     public function store(Request $request, Response $response, $args)
@@ -83,4 +65,23 @@ class UserController
 
         return $response;
     }
+
+    public function edit(Request $request, Response $response, $args){
+      
+      $user = new Users;
+      $user = $user->select()->where('id', $args['id'])->first();
+
+      echo returnApi('','',$user);
+      
+      return $response;
+    }
+    
+    public function update(Request $request, Response $response, $args){
+      
+
+      echo returnApi('','',$args);
+
+      return $response;
+    }
+
 }
