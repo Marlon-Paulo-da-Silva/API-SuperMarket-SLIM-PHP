@@ -9,7 +9,7 @@ trait Read {
   private $binds;
 
   public function select($fields = '*'){
-    $this->sql = "select {$fields} from {$this->table}";
+    $this->sql = "SELECT {$fields} FROM {$this->table}";
 
     return $this;
   }
@@ -25,9 +25,8 @@ trait Read {
     // die();
 
 
-    $this->sql.= " where {$args['field']} {$args['sinal']} :{$args['field']}";
+    $this->sql.= " WHERE {$args['field']} {$args['sinal']} :{$args['field']} AND deleted_at IS NULL";
 
-    
     $this->binds = [
       $args['field'] => $args['value']
     ];

@@ -19,10 +19,10 @@ trait Update {
 
     $sql.= ", updated_at = now()";
 
-    $sql.= " where {$this->field} = :{$this->field}";
+    $sql.= " WHERE {$this->field} = :{$this->field} AND deleted_at IS NULL";
 
 
-    // returnApi('SUCCESS', 'sql', $sql);
+    returnApi('SUCCESS', 'sql', $sql);
 
     $attributes['id'] = $this->value;
 

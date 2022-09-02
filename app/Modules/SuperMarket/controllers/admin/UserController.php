@@ -21,7 +21,7 @@ class UserController
   public function index(Request $request, Response $response, $args){
     
 
-    $user = $this->user->select('id, name, email, phone')->where('id','>','2')->get();
+    $user = $this->user->select('id, name, email, phone')->where('id','>','1')->get();
 
     returnApi ('SUCCESS', 'Find Users', $user);
 
@@ -119,9 +119,20 @@ class UserController
     return $response;
   }
 
+  public function destroy(Request $request, Response $response, $args){
+    // $deleted = $this->user->find()->delete();
+    $deleted = $this->user->find('id', $args['id'])->delete();
+
+    // returnApi('','',$deleted);
+
+    if($deleted){
+      returnApi('SUCCESS','delete successful!');
+    }
+
+    returnApi('ERROR','delete not realized');
+
+    return $response;
+  
+  }
 }
 
-function destroy(Request $request, Response $response, $args){
-  // $deleted = $this->user->find()->delete();
-  
-}
