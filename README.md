@@ -13,7 +13,11 @@
 <h4>Blog</h4>
 
 - [x] Criando a estrutura do projeto
-- [x] Criando tela de login
-- [x] Realizando login
-- [ ] Criando tela de cadastro
-- [ ] Realizando cadastro
+- [x] Criar usuários
+- [x] Ler usuários
+- [x] Atualizar usuários
+- [x] Remover usuários
+- [ ] Criar Produtos
+- [ ] Ler Produtos
+- [ ] Atualizar Produtos
+- [ ] Remover Produtos
