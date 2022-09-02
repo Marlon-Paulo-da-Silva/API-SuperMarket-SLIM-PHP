@@ -123,4 +123,5 @@ class UserController
 
 function destroy(Request $request, Response $response, $args){
   // $deleted = $this->user->find()->delete();
+  
 }
