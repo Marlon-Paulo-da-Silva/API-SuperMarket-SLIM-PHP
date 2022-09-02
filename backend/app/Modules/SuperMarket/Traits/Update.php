@@ -22,7 +22,7 @@ trait Update {
     $sql.= " WHERE {$this->field} = :{$this->field} AND deleted_at IS NULL";
 
 
-    returnApi('SUCCESS', 'sql', $sql);
+    // returnApi('SUCCESS', 'sql', $sql);
 
     $attributes['id'] = $this->value;
 

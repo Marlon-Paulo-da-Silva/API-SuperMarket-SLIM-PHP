@@ -5,10 +5,13 @@
   require 'bootstrap.php';
 
   use Slim\Factory\AppFactory;
+  use Zeuxisoo\Whoops\Slim\WhoopsMiddleware;
 
   $app = AppFactory::create();
 
-  $app->setBasePath('/CRUD-SuperMarket-SLIM-PHP/app');
+  $app->add(new WhoopsMiddleware());
+
+  $app->setBasePath('/CRUD-SuperMarket-SLIM-PHP/backend/app');
 
   $app->get('/', 'app\Modules\SuperMarket\controllers\status\StatusController:index');
 

@@ -2,7 +2,7 @@ Allow from All
 
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    RewriteBase /CRUD-SuperMarket-SLIM-PHP/app
+    RewriteBase /CRUD-SuperMarket-SLIM-PHP/backend/app
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [QSA,L]
 
