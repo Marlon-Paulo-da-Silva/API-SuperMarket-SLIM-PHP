@@ -42,7 +42,7 @@
   }
 
   function returnApi($status, $message, $data = []){
-    return json_encode([
+    echo json_encode([
       'status' => $status,
       'message' => $message,
       'data' => $data

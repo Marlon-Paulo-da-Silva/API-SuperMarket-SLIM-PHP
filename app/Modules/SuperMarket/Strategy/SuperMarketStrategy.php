@@ -16,15 +16,19 @@ trait SuperMarketStrategy {
     }
   }
   protected function email($field){
-    if(!filter_var($_POST[$field], FILTER_VALIDATE_EMAIL)){
-      $this->apierrors['errors']['invalid_email'][] = $_POST[$field];
+    if(!empty($_POST[$field])){
+      if(!filter_var($_POST[$field], FILTER_VALIDATE_EMAIL)){
+        $this->apierrors['errors']['invalid_email'][] = $_POST[$field];
+      }
     }
     
   }
   
   protected function phone($field){
-    if(!preg_match("/^\(?[1-9]{2}\)? ?(?:[2-8]|9[1-9])[0-9]{3}\-?[0-9]{4}$/", $_POST[$field])){
-      $this->apierrors['errors']['invalid_phone'][] = $_POST[$field];
+    if(!empty($_POST[$field])){
+      if(!preg_match("/^\(?[1-9]{2}\)? ?(?:[2-8]|9[1-9])[0-9]{3}\-?[0-9]{4}$/", $_POST[$field])){
+        $this->apierrors['errors']['invalid_phone'][] = $_POST[$field];
+      }
     }
   }
   

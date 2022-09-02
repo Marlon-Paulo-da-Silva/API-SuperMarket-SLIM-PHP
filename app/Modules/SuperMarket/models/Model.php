@@ -6,15 +6,18 @@ namespace app\Modules\SuperMarket\models;
 use app\Connection\Connection;
 use app\Modules\SuperMarket\Traits\Create;
 use app\Modules\SuperMarket\Traits\Read;
+use app\Modules\SuperMarket\Traits\Update;
 
 // use Update;
 // use Delete;
 
 class Model {
 
-  use Create, Read;
+  use Create, Read, Update;
 
   protected $connect;
+  protected $field;
+  protected $value;
 
   public function __construct()
   {
@@ -31,11 +34,15 @@ class Model {
   }
 
   public function find($field, $value){
-    $sql = "select * from {$this->table} where {$field} = :{$field}";
-    $find = $this->connect->prepare($sql);
-    $find->bindValue($field, $value);
-    $find->execute();
+    $this->field = $field;
+    $this->value = $value;
 
-    return $find->fetch();
+    // $sql = "select * from {$this->table} where {$field} = :{$field}";
+    // $find = $this->connect->prepare($sql);
+    // $find->bindValue($field, $value);
+    // $find->execute();
+
+    // return $find->fetch();
+    return $this;
   }
 }
