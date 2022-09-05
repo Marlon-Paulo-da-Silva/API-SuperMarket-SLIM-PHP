@@ -50,3 +50,11 @@
 
     die();
   }
+
+  function busca(){
+    $search = '';
+    if(isset($_GET['search'])){
+      $search = strip_tags($_GET['search']);
+    }
+    return $search;
+  }

@@ -5,8 +5,6 @@ use app\Modules\SuperMarket\models\Paginate;
 
 trait Read {
 
-  private $sql;
-
   private $binds;
 
   private $isPaginate = false;
@@ -82,6 +80,22 @@ trait Read {
   public function links(){
     
     return $this->paginate->links();
+  }
+
+  public function busca($fields){
+    $fields = explode(',', $fields);
+
+    $this->sql .= " WHERE";    
+    foreach ($fields as $field) {
+      $this->sql .= " {$field} LIKE :{$field} or"; 
+      $this->binds[$field] = "%" . busca() . "%";
+    }
+
+    $this->sql = rtrim($this->sql, ' or');
+
+    // returnApi('','', $this->sql);
+    return $this;
+
   }
 
   public function get(){

@@ -34,6 +34,8 @@
   $app->group('/stock', function (RouteCollectorProxy $group) {
 
     $group->get('/products', 'app\Modules\SuperMarket\controllers\stock\ProductsController:index');
+    $group->get('/products/find', 'app\Modules\SuperMarket\controllers\stock\ProductsController:find');
+    
     $group->post('/new', 'app\Modules\SuperMarket\controllers\stock\ProductsController:store');
   
   });

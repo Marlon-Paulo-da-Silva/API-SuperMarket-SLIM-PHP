@@ -13,8 +13,27 @@ class ProductsController
     public function index(Request $request, Response $response, $args)
     {
         $product = new Products;
+        
+        
         $products = $product->select()->paginate(5)->get();
+        
 
+        // echo json_encode($product->links());
+        // die();
+
+        returnApi ('SUCCESS', 'products', ['products' => $products, 'pagination_links' => $product->links()]);
+        // returnApi ('SUCCESS', 'Find products', $products);
+
+        return $response;
+    }
+
+    public function find(Request $request, Response $response, $args)
+    {
+        $product = new Products;
+        
+        
+        $products = $product->select()->busca('name,type')->paginate(5)->get();
+        
 
         // echo json_encode($product->links());
         // die();
