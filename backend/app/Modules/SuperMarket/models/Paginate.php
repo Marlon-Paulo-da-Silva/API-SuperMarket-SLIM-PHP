@@ -45,7 +45,5 @@ class Paginate {
     $this->offset();
 
     $this->pages();
-
-    return $this;
   }
 }

@@ -12,10 +12,15 @@ class ProductsController
 {
     public function index(Request $request, Response $response, $args)
     {
-        $products = new Products;
-        $products = $products->select()->paginate(2)->get();
+        $product = new Products;
+        $products = $product->select()->paginate(5)->get();
 
-        returnApi ('SUCCESS', 'Find products', $products);
+
+        // echo json_encode($product->links());
+        // die();
+
+        returnApi ('SUCCESS', 'products', ['products' => $products, 'pagination_links' => $product->links()]);
+        // returnApi ('SUCCESS', 'Find products', $products);
 
         return $response;
     }

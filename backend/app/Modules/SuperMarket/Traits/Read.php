@@ -70,12 +70,18 @@ trait Read {
   public function paginate($perPage){
     $this->paginate = new Paginate;
 
-    $this->paginate->records(count($this->get()));
-    $this->paginate->paginate($perPage);
+    $this->paginate->records($this->count());
 
-    $this->isPaginate = true;
+    $this->paginate->paginate($perPage);
+    
+    $this->sql .= $this->paginate->sqlPaginate();
 
     return $this;
+  }
+
+  public function links(){
+    
+    return $this->paginate->links();
   }
 
   public function get(){
@@ -90,12 +96,13 @@ trait Read {
     return $select->fetch();
   }
 
-  private function bindAndExecute(){
+  public function count(){
+    $select = $this->bindAndExecute();
 
-    if($this->isPaginate){
-      $this->sql = $this->sql.$this->paginate->sqlPaginate();
-      // returnApi ('SUCCESS', 'Find Users', $this->sql);
-    }
+    return $select->rowCount();
+  }
+
+  private function bindAndExecute(){
 
     $select = $this->connect->prepare($this->sql);
     $select->execute($this->binds);

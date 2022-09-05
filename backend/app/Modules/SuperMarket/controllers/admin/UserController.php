@@ -21,9 +21,9 @@ class UserController
   public function index(Request $request, Response $response, $args){
     
 
-    $user = $this->user->select('id, name, email, phone')->where('id','>','1')->get();
+    $users = $this->user->select('id, name, email, phone')->where('id','>','1')->paginate(3)->get();
 
-    returnApi ('SUCCESS', 'Find Users', $user);
+    returnApi ('SUCCESS', 'Find Users', ['products' => $users, 'pagination_links' => $this->user->links()]);
 
     return $response;
   }
