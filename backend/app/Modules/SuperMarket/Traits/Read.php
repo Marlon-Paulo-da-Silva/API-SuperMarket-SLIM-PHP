@@ -1,12 +1,17 @@
 <?php
 
 namespace app\Modules\SuperMarket\Traits;
+use app\Modules\SuperMarket\models\Paginate;
 
 trait Read {
 
   private $sql;
 
   private $binds;
+
+  private $isPaginate = false;
+  
+  private $paginate;
 
   public function select($fields = '*'){
     $this->sql = "SELECT {$fields} FROM {$this->table}";
@@ -62,6 +67,17 @@ trait Read {
     ];
   }
 
+  public function paginate($perPage){
+    $this->paginate = new Paginate;
+
+    $this->paginate->records(count($this->get()));
+    $this->paginate->paginate($perPage);
+
+    $this->isPaginate = true;
+
+    return $this;
+  }
+
   public function get(){
     $select = $this->bindAndExecute();
 
@@ -75,6 +91,12 @@ trait Read {
   }
 
   private function bindAndExecute(){
+
+    if($this->isPaginate){
+      $this->sql = $this->sql.$this->paginate->sqlPaginate();
+      // returnApi ('SUCCESS', 'Find Users', $this->sql);
+    }
+
     $select = $this->connect->prepare($this->sql);
     $select->execute($this->binds);
 

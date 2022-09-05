@@ -12,7 +12,7 @@ use app\Modules\SuperMarket\Traits\Delete;
 // use Update;
 // use Delete;
 
-class Model {
+abstract class Model {
 
   use Create, Read, Update, Delete;
 

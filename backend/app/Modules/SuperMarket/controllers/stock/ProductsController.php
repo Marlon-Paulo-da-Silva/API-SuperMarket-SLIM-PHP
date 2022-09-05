@@ -13,9 +13,9 @@ class ProductsController
     public function index(Request $request, Response $response, $args)
     {
         $products = new Products;
-        $products = $products->all();
+        $products = $products->select()->paginate(2)->get();
 
-        echo json_encode($products);
+        returnApi ('SUCCESS', 'Find products', $products);
 
         return $response;
     }

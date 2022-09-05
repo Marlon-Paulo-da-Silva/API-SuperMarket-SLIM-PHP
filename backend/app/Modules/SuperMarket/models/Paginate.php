@@ -1,12 +1,17 @@
 <?php
 
 namespace app\Modules\SuperMarket\models;
+use app\Modules\SuperMarket\Traits\Links;
 
 class Paginate {
+
+  use Links;
 
   private $page;
   private $perPage;
   private $offset;
+  private $pages;
+  private $records;
 
   private function current(){
     $this->page = $_GET['page'] ?? '1';
@@ -29,6 +34,18 @@ class Paginate {
   }
 
   public function sqlPaginate(){
-    return "limit {$this->perPage} offset $this->offset";
+    return " limit {$this->perPage} offset $this->offset";
+  }
+
+  public function paginate($perPage){
+    $this->current();
+
+    $this->perPage($perPage);
+
+    $this->offset();
+
+    $this->pages();
+
+    return $this;
   }
 }
