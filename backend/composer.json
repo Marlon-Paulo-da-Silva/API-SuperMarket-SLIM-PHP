@@ -20,6 +20,7 @@
         "slim/psr7": "^1.5",
         "league/plates": "^3.4",
         "vlucas/phpdotenv": "^5.4",
-        "zeuxisoo/slim-whoops": "^0.7.3"
+        "zeuxisoo/slim-whoops": "^0.7.3",
+        "phpmailer/phpmailer": "^6.6"
     }
 }
