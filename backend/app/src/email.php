@@ -2,7 +2,6 @@
 
 namespace app\src;
 
-// use League\Plates\Template\Template;
 use app\Modules\SuperMarket\templates\Template;
 use PHPMailer\PHPMailer\PHPMailer;
 
@@ -10,6 +9,7 @@ class Email {
 
 
   private $data;
+  private $template;
 
   public function data(array $data){
     $this->data = (object)$data;
@@ -20,8 +20,11 @@ class Email {
   public function template(Template $template){
     if(!isset($this->data)){
       returnApi('Error', 'Data not found','method: data');
-      
     }
+
+    $this->template = $template->run($this->data);
+
+    return $this;
   }
 
   public function send(){
@@ -50,7 +53,8 @@ class Email {
     //Content
     $mailer->isHTML(true);                                  //Set email format to HTML
     $mailer->Subject = $this->data->subject;
-    $mailer->Body    = $this->data->message;
+    // $mailer->Body    = $this->data->message;
+    $mailer->Body    = $this->template;
     $mailer->AltBody = 'Att Marlon Paulo Developer';
 
     $mailer->send();

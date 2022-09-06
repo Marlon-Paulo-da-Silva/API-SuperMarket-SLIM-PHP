@@ -6,7 +6,8 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use app\Repository\LoginRepository;
 use app\helpers\Validates;
-use app\Modules\SuperMarket\models\Users;
+// use app\Modules\SuperMarket\models\Users;
+use app\Modules\SuperMarket\templates\Contato;
 use app\src\Email;
 
 class ContactController
@@ -43,7 +44,7 @@ class ContactController
       'toEmail' => 'marlon.pauloo@gmail.com',
       'subject' => $data->subject,
       'message' => $data->message,
-    ])->send();
+    ])->template(new Contato)->send();
 
     $email->send();
 
