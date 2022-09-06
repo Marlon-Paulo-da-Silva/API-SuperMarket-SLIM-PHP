@@ -48,10 +48,7 @@ class UserController
 
     if($validate->hasErrors()){
       // back();
-      $errors = $validate->getApiErrors();
-      
-      echo $errors;
-      die();
+      echo $validate->getApiErrors();
     }
 
 
@@ -93,10 +90,7 @@ class UserController
 
     if($validate->hasErrors()){
       // back();
-      $errors = $validate->getApiErrors();
-      
-      echo $errors;
-      die();
+      echo $validate->getApiErrors();
     }
 
 

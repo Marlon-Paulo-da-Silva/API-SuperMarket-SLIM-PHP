@@ -41,12 +41,10 @@
   });
 
   // contato
-  $app->group('/contato', function (RouteCollectorProxy $group) {
+  $app->group('/contact', function (RouteCollectorProxy $group) {
 
-    $group->get('/products', 'app\Modules\SuperMarket\controllers\stock\ProductsController:index');
-    $group->get('/products/find', 'app\Modules\SuperMarket\controllers\stock\ProductsController:find');
+    $group->get('/email', 'app\Modules\SuperMarket\controllers\contact\ContactController:index');
+    $group->post('/email/store', 'app\Modules\SuperMarket\controllers\contact\ContactController:store');
     
-    $group->post('/new', 'app\Modules\SuperMarket\controllers\stock\ProductsController:store');
-  
   });
 

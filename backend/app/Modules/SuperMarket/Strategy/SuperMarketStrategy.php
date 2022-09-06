@@ -55,11 +55,13 @@ trait SuperMarketStrategy {
   }
 
   public function getApiErrors(){
-    return json_encode([
+    echo json_encode([
       'status' => 'ERROR',
-      'message' => 'Invalid Signup',
+      'message' => 'Invalid data',
       'data' => $this->apierrors
     ]);
+
+    die();
   }
   
 }
