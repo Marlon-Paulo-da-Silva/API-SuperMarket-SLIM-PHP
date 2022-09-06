@@ -6,6 +6,7 @@
         },
         "files":[
             "app/helpers/helpers.php",
+            "app/helpers/config.php",
             "app/Modules/SuperMarket/layouts/view.php"
         ]
     },

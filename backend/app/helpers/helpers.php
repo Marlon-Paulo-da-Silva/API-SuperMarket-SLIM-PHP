@@ -58,3 +58,15 @@
     }
     return $search;
   }
+
+  function mailerConfig(){
+    $mailerConf = [
+      'email' => [
+        'host' => 'smtp.mailtrap.io',
+        'port' => 465,
+        'username' => '9b6d23179a7e84',
+        'password' => 'b99e1cf57c951a'
+      ]
+    ];
+    return $mailerConf;
+  }

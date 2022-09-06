@@ -7,6 +7,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use app\Repository\LoginRepository;
 use app\helpers\Validates;
 use app\Modules\SuperMarket\models\Users;
+use app\src\Email;
 
 class ContactController
 {
@@ -19,21 +20,35 @@ class ContactController
 
   public function store(Request $request, Response $response, $args)
   {
-      $validate =  new Validates;
+    $validate =  new Validates;
+    
+    
+    $data = $validate->validate([
+      'name' => 'required',
+      'email' => 'required:email',
+      'subject' => 'required',
+      'message' => 'required'
+    ]);
+    
+    if ($validate->hasErrors()) {
+      echo $validate->getApiErrors();
+    }
 
-      $data = $validate->validate([
-        'name' => 'required',
-        'email' => 'required:email',
-        'subject' => 'required',
-        'message' => 'required'
-      ]);
+    $email = new Email;
+    
+    $email->data([
+      'fromName' => $data->name,
+      'fromEmail' => $data->email,
+      'toName' => 'Marlon Paulo',
+      'toEmail' => 'marlon.pauloo@gmail.com',
+      'subject' => $data->subject,
+      'message' => $data->message,
+    ])->send();
 
-      if ($validate->hasErrors()) {
-        echo $validate->getApiErrors();
-      }
+    $email->send();
 
-      returnApi('SUCCESS','Page','Contato');
+    returnApi('SUCCESS','Page','Contato');
 
-      return $response;
+    return $response;
   }
 } 
