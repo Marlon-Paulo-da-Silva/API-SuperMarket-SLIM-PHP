@@ -28,6 +28,12 @@ class Email {
   }
 
   public function send(){
+
+    if(!isset($this->template)){
+      throw new \Exception("Por favor escolha um template com o metodo template, antes de enviar um e-mail");
+      
+    }
+
     $mailer = new PHPMailer;
 
     $config = (object) mailerConfig();
@@ -42,6 +48,7 @@ class Email {
     $mailer->Username   = $config->username;              //SMTP username
     $mailer->Password   = $config->password;                              //SMTP password
     $mailer->Port       = $config->port;                  //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+    $mailer->CharSet       = "UTF-8";                  //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
     
     //Recipients
     $mailer->setFrom($this->data->fromEmail, $this->data->fromName);
